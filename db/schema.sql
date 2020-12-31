@@ -1,32 +1,29 @@
 -- Creating our database
-DROP DATABASE IF EXISTS employee_trackerDB;
+DROP DATABASE IF EXISTS employees;
 
-CREATE DATABASE employee_trackerDB;
+CREATE DATABASE employees;
 
-USE employee_trackerDB;
+USE employees;
 
 -- Department table
 CREATE TABLE department (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30)
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    department_name VARCHAR(30) NOT NULL
 );
 -- Role table
 CREATE TABLE role (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(30),
-    salary DECIMAL,
-    department_id INT,
-    FOREIGN KEY (department_id) REFERENCES department(id)
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(30) NOT NULL,
+    salary DECIMAL(10, 2) NOT NULL,
+    department_id INT
 );
 -- Employee role table
 CREATE TABLE employee (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(30),
-    last_name VARCHAR(30),
-    manager_id INT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
     role_id INT,
-    FOREIGN KEY (role_id) REFERENCES role(id),
-    FOREIGN KEY (manager_id) REFERENCES employee(id)
+    manager_id INT
 );
 
 
@@ -55,6 +52,8 @@ INSERT INTO role (title, salary, department_id)
 VALUE ("Software Engineer", 120000, 2);
 INSERT INTO role (title, salary, department_id)
 VALUE ("Lawyer", 190000, 4);
+
+-- Employee seeds
 
 
 
