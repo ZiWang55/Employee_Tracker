@@ -59,7 +59,8 @@ INSERT INTO role (title, salary, department_id)
 VALUE ("Lawyer", 190000, 4);
 
 -- Employee seeds
-
+INSERT INTO employee (first_name, last_name, manager_id, role_id)
+VALUE("Jeffery", "Hoseman", null, 1);
 
 
 -- Selecting
