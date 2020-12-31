@@ -51,7 +51,11 @@ function startPrompt() {
           viewAllDepartments();
           break;
 
-        case "Add Employee?":
+case "Add Employee?":
+  AddEmployee();
+  break;
+
+        case "Update Employee?":
           updateEmployee();
           break;
 
@@ -129,12 +133,50 @@ function AddEmployee(){
   inquirer
   .prompt([
     {
-      name: "",
-      type: "",
-      message: "", 
+      name: "firstname",
+      type: "input",
+      message: "enter their first name", 
     },
     {
-
-    }
+      name:"lastname",
+      type:"input",
+      message:"enter their last name",
+    },
+    {
+      name: "role",
+      type:"list",
+      message:"what is their role?",
+choices:selectRole(),
+    },
+    {
+    name:"choice",
+    type:"rawlist",
+    message:"who is their manager",
+    choices:selectManager(),
+    },
   ])
+  .then(function (val) {
+    var roleId = selectRole().indexOf(val.role) + 1;
+    var mangerId = selectManager().indexOf(val.choice) + 1;
+    connection.query(
+      "INSERT INTO employee SET ?",
+      {
+        first_name: val.firstName,
+        last_name: val.lastName,
+        manager_id: managerId,
+        role_id: roleId,
+      },
+      function (err) {
+      
+          if (err) throw err;
+          console.table(val);
+          startPrompt();
+        
+      }
+    )
+  })
+}
+//Update employee
+function updateEmployee() {
+  connection
 }
