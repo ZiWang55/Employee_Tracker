@@ -78,9 +78,34 @@ function viewAllEmployees() {
   );
 }
 //View all roles
-
+function viewAllRoles() {
+    connection.query(
+    "SELECT employee.first_name, employee.last_name, role.title AS Title FROM employee JOIN role ON employee.role_id = role.id;",
+    function (err, res) {
+        if (err) throw err;
+        console.table(res);
+        startPrompt();
+}
+    )
+}
 //View all employees by departments
+function viewAllDepartments(){
+  connection.query(
+    "SELECT employee.first_name, employee.last_name, department.name AS Department FROM employee JOIN role ON employee.role_id = role.id JOIN department ON role.department_id = department.id ORDER BY employee.id;",
+  function (err, res) {
+    if (err) throw err;
+    console.table(res);
+    startPrompt();
+  }
+    )
+}
 
-//Add  emplyee prompt
-
-//
+//Add employee
+function AddEmployee(){
+  inquirer
+  .prompt([
+    {
+      name" 
+    }
+  ])
+}
