@@ -99,13 +99,42 @@ function viewAllDepartments(){
   }
     )
 }
-
+//Select role title for add employee
+var roleArr = [];
+function selectRole() {
+  connection.query("SELECT * FROM role", function (err, res) {
+    if (err) throw err;
+    for(var i = 0; i < res.length; i++) {
+      roleArr.push(res[i].title);
+    }
+  })
+  return roleArr;
+}
+//Select manager for addd employee
+var managerArr = [];
+function selectManager() {
+  connection.query(
+    "SELECT first_name, last_name FROM employee WHERE manager_id IS NULL",
+    function (err, res) {
+      if (err) throw err;
+      for (var i = 0; i < res.length; i++) {
+        managerArr.push(res[i].first_name);
+      }
+    }
+  )
+  return managersArr;
+}
 //Add employee
 function AddEmployee(){
   inquirer
   .prompt([
     {
-      name" 
+      name: "",
+      type: "",
+      message: "", 
+    },
+    {
+
     }
   ])
 }
