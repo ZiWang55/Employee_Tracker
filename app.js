@@ -177,7 +177,7 @@ function AddEmployee() {
 //Update employee
 function updateEmployee() {
   connection.query(
-    "SELECT employee.last_name, role.title FROm employee JOIN role On employee.role_id = role.id;",
+    "SELECT employee.last_name, role.title FROM employee JOIN role ON employee.role_id = role.id;",
     function (err, res) {
       if (err) throw err;
       console.log(res);

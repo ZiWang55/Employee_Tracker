@@ -1,4 +1,3 @@
-  
 DROP DATABASE IF EXISTS employees;
 CREATE DATABASE employees;
 USE employees;
@@ -22,3 +21,8 @@ CREATE TABLE employee(
     role_id INTEGER,
     manager_id INTEGER
 );
+
+
+
+
+    
